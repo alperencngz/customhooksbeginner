@@ -1,19 +1,24 @@
 import { useState } from "react";
 
-const useFecth = async (action, taskText = "") => {
+const useFetch = async (action, taskText = "") => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
+
+    setIsLoading(true);
+    setError(null);
     try {
 
+        const response = "";
+
         if (action = "GET") {
-            const response = await fetch(
+            response = await fetch(
                 'https://customhooks-f2f4e-default-rtdb.firebaseio.com/tasks.json'
             );
         }
 
         if (action = "POST") {
-            const response = await fetch(
+            response = await fetch(
                 'https://customhooks-f2f4e-default-rtdb.firebaseio.com/tasks.json',
                 {
                     method: 'POST',
@@ -29,14 +34,14 @@ const useFecth = async (action, taskText = "") => {
             throw new Error('Request failed!');
         }
 
-        const data = await response.json();
+        data = await response.json();
 
     } catch (err) {
       setError(err.message || 'Something went wrong!');
     }
     setIsLoading(false);
 
-    return [data, isLoading, error]
+    return [this.data, isLoading, error]
 };
 
-export default useFecth;
+export default useFetch;
